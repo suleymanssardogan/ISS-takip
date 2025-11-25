@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>ISS Takip Paneli</title>
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="https://unpkg.com/globe.gl"></script>
+    <script defer src="./script.js"></script>
+</head>
+<body>
+    <div id="ui-layer">
+        <div class="panel-header">
+            <h1>ISS Durumu 🛰️</h1>
+            <span id="status" class="status waiting">Bekleniyor...</span>
+        </div>
+
+        <div class="metrics">
+            <div>Enlem: <span id="lat">-</span></div>
+            <div>Boylam: <span id="lng">-</span></div>
+            <div>Yükseklik: <span id="alt">-</span> km</div>
+        </div>
+
+        <div class="section pass-section">
+            <div class="section-title">
+                <span>Yaklaşan Geçişler</span>
+                <span id="pass-source">Konum bekleniyor...</span>
+            </div>
+            <div id="pass-status" class="pass-status waiting">Konum belirleniyor...</div>
+            <ul id="pass-results"></ul>
+        </div>
+
+        <div class="section crew-section">
+            <div class="section-title">
+                <span>Aktif Astronotlar</span>
+                <span id="crew-count">-</span>
+            </div>
+            <div id="crew-list" class="crew-list"></div>
+            <div id="crew-status" class="crew-status waiting">Veri bekleniyor...</div>
+        </div>
+    </div>
+    <div id="globeViz"></div>
+</body>
+</html>

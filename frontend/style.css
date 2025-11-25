@@ -1,0 +1,185 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background: radial-gradient(circle at top, #060818, #010409 60%);
+    font-family: "Inter", "Segoe UI", sans-serif;
+    color: #e2f6ff;
+}
+
+#globeViz {
+    width: 100vw;
+    height: 100vh;
+}
+
+#ui-layer {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    padding: 1.25rem;
+    width: 340px;
+    background: rgba(5, 9, 28, 0.85);
+    border: 1px solid rgba(255, 0, 70, 0.35);
+    border-radius: 14px;
+    backdrop-filter: blur(6px);
+    z-index: 10;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.panel-header h1 {
+    font-size: 1.15rem;
+    margin: 0;
+    color: #ff5c7a;
+}
+
+.status {
+    font-size: 0.85rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.status.waiting {
+    color: #ffd500;
+}
+
+.status.ok {
+    color: #00ffa0;
+}
+
+.status.error {
+    color: #ff4d6d;
+}
+
+.metrics {
+    margin: 1rem 0;
+    display: grid;
+    gap: 0.4rem;
+    font-size: 0.95rem;
+}
+
+.metrics span {
+    font-weight: 600;
+    color: #7ee7ff;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ff99b2;
+}
+
+.pass-status {
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+.pass-status.waiting {
+    color: #ffd500;
+}
+
+.pass-status.ok {
+    color: #00ffa0;
+}
+
+.pass-status.error {
+    color: #ff4d6d;
+}
+
+#pass-results {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+#pass-results li {
+    padding: 0.45rem 0.6rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 0.85rem;
+}
+
+.crew-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.astronaut-card {
+    display: flex;
+    gap: 0.7rem;
+    align-items: center;
+    padding: 0.45rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.astronaut-card img {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.astronaut-card strong {
+    font-size: 0.9rem;
+}
+
+.astronaut-card span {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.crew-status {
+    font-size: 0.78rem;
+    margin-top: 0.2rem;
+    opacity: 0.85;
+}
+
+.iss-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #ffffff, #58c6ff);
+    box-shadow: 0 0 12px rgba(88, 198, 255, 0.8), 0 0 30px rgba(0, 255, 204, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.85; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.85; }
+}
