@@ -13,6 +13,23 @@ const passStatusEl = document.getElementById('pass-status');
 const passResultsEl = document.getElementById('pass-results');
 const passSourceEl = document.getElementById('pass-source');
 
+
+const ASTRONAUT_PHOTOS = {
+    "Oleg Kononenko": "oleg.jpeg",
+    "Nikolai Chub": "nikolai.jpeg",
+    "Tracy Caldwell Dyson": "tracy.jpeg",
+    "Matthew Dominick": "matthew.jpeg",
+    "Michael Barratt": "michael.jpeg",
+    "Jeanette Epps": "jeanette.jpeg",
+    "Alexander Grebenkin": "alexander.jpeg",
+    "Butch Wilmore": "butch.jpeg",
+    "Sunita Williams": "sunita.jpeg",
+    "Li Guangsu": "guangsu.jpeg",
+    "Li Cong": "cong.jpeg",
+    "Ye Guangfu": "huangfu.jpeg",
+};
+
+
 const world = Globe()(globeElement)
     .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
     .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
@@ -106,25 +123,36 @@ async function updateISS() {
 
 function renderCrewList(people) {
     crewListEl.innerHTML = '';
+
     if (!people.length) {
         const empty = document.createElement('div');
         empty.textContent = 'Astronot verisi bulunamadı.';
         crewListEl.appendChild(empty);
         return;
     }
+
     people.forEach(person => {
+        // Fotoğraf eşleşmesi
+        const fileName = ASTRONAUT_PHOTOS[person.name] || "default.jpg";
+        const photoPath = `./photos/${fileName}`;
+
         const card = document.createElement('div');
         card.className = 'astronaut-card';
+
         card.innerHTML = `
-            <img src="${person.photo}" alt="${person.name}" loading="lazy">
+            <img src="${photoPath}" alt="${person.name}" loading="lazy">
             <div>
                 <strong>${person.name}</strong>
                 <span>${person.craft}</span>
             </div>
         `;
+
         crewListEl.appendChild(card);
     });
 }
+
+
+
 
 function setCrewStatus(state, message) {
     crewStatusEl.classList.remove('waiting', 'ok', 'error');
